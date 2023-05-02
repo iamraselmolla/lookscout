@@ -9,7 +9,7 @@ const AdminPanel = () => {
     const [reload, setReload] = useState(false)
 
     useEffect(() => {
-        fetch("http://localhost:5000/logo")
+        fetch("https://lookscout-server.vercel.app/logo")
         .then(res => res.json())
         .then(data => {
             setLogoData(data[data.length -1])
@@ -34,7 +34,7 @@ const AdminPanel = () => {
                 const logoURL = data.data?.display_url;
                 const uploadedTime = new Date().getTime();
                 const logoData = {logoURL, uploadedTime}
-                fetch("http://localhost:5000/logo", {
+                fetch("https://lookscout-server.vercel.app/logo", {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -65,7 +65,7 @@ const AdminPanel = () => {
                         <h2 className="site-logo">
                             Site Logo
                         </h2>
-                        <small className='mb-2'>Last updated at: {new Date(logoData?.uploadedTime).toLocaleString("en-IN")}</small> <br />
+                        <small className='mb-2'>Last updated at: { logoData?.uploadedTime ? new Date(logoData?.uploadedTime).toLocaleString("en-IN") : "Didn't upload any logo yet"}</small> <br />
                         <img className='logo_image mt-3' src={logoData?.logoURL} alt="" />
                         <Form className='mt-4' onSubmit={uploadLogo}>
                             <Form.Group controlId="formFile" className="mb-3">

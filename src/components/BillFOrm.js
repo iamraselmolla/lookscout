@@ -17,7 +17,7 @@ const BillFOrm = () => {
     const pass = e.target.pass.value
     const repass = e.target.repass.value;
     const userData = { name, email, pass, repass }
-    fetch('http://localhost:5000/user-data', {
+    fetch('https://lookscout-server.vercel.app/user-data', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

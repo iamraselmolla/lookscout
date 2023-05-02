@@ -10,7 +10,7 @@ const Home = () => {
   const [logoData, setLogoData] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:5000/logo")
+    fetch("https://lookscout-server.vercel.app/logo")
     .then(res => res.json())
     .then(data => {
         setLogoData(data[data.length -1])
@@ -24,7 +24,7 @@ const Home = () => {
         <div className="row">
           <div className="col-lg-6 offset-lg-3">
             <div className="logo text-center mb-4">
-              <img className='text-center logo_image' src={logoData?.logoURL} alt="" />
+              <img className='text-center logo_image' src={logoData?.logoURL || "logo.png"} alt="" />
             </div>
             <div className="border rounded-4 px-md-5 px-3 py-4">
               <div className="onboard-form-container  mb-4 fw-bold d-flex justify-content-between">

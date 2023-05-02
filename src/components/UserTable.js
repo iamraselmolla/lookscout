@@ -4,7 +4,7 @@ import { Spinner, Table } from 'react-bootstrap';
 const UserTable = () => {
     const [userTable, setUserTable] = useState()
     useEffect(() => {
-        fetch('http://localhost:5000/user-data')
+        fetch('https://lookscout-server.vercel.app/user-data')
             .then(res => res.json())
             .then(data => setUserTable(data))
     }, []);
